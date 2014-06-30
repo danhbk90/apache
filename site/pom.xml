@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.quangpld</groupId>
-        <artifactId>ecommerce-website</artifactId>
+        <artifactId>dathang24h</artifactId>
         <version>1.0</version>
     </parent>
     <artifactId>site</artifactId>
@@ -21,7 +21,7 @@
     </properties>
     <build>
         <outputDirectory>${webappDirectory}/WEB-INF/classes</outputDirectory>
-        <finalName>quangpld</finalName>
+        <finalName>dathang24h-site</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
