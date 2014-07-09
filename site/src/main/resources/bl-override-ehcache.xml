@@ -112,6 +112,84 @@
         overflowToDisk="true"
         timeToLiveSeconds="3"/>
 
+    <cache name="cmsPageCache"
+           maxElementsInMemory="1000"
+           eternal="false"
+           overflowToDisk="true"
+           timeToLiveSeconds="3"/>
+
+    <cache name="cmsStructuredContentCache"
+           maxElementsInMemory="5000"
+           eternal="false"
+           overflowToDisk="true"
+           timeToLiveSeconds="3"/>
+
+    <cache name="cmsUrlHandlerCache"
+           maxElementsInMemory="5000"
+           eternal="false"
+           overflowToDisk="true"
+           timeToLiveSeconds="3"/>
+
+    <cache
+        name="blSystemPropertyElements"
+        maxElementsInMemory="1000"
+        eternal="false"
+        overflowToDisk="false"
+        timeToLiveSeconds="3"/>
+
+    <cache name="blSystemPropertyNullCheckCache"
+           maxElementsInMemory="1000"
+           eternal="false"
+           overflowToDisk="false"
+           timeToLiveSeconds="3"/>
+
+    <cache
+        name="blBundleElements"
+        maxElementsInMemory="1000"
+        eternal="false"
+        overflowToDisk="false"
+        timeToLiveSeconds="3"/>
+
+    <cache name="blProductUrlCache"
+           maxElementsInMemory="1000"
+           eternal="false"
+           overflowToDisk="false"
+           timeToLiveSeconds="3"/>
+
+    <cache name="blCategoryUrlCache"
+           maxElementsInMemory="1000"
+           eternal="false"
+           overflowToDisk="false"
+           timeToLiveSeconds="3"/>
+
+    <cache
+        name="query.Cms"
+        maxElementsInMemory="1000"
+        eternal="false"
+        overflowToDisk="false"
+        timeToLiveSeconds="3"/>
+
+    <cache
+        name="query.Order"
+        maxElementsInMemory="1000"
+        eternal="false"
+        overflowToDisk="false"
+        timeToLiveSeconds="3"/>
+
+    <cache name="blTemplateElements"
+           maxElementsInMemory="1000"
+           eternal="false"
+           overflowToDisk="true"
+           timeToLiveSeconds="3"/>
+
+    <cache
+        name="CyberSourceTaxRequests"
+        maxElementsInMemory="1000000"
+        eternal="false"
+        overflowToDisk="true"
+        timeToLiveSeconds="3"
+        timeToIdleSeconds="100"/>
+
      <!-- This is required by Hibernate to ensure that query caches return
           corrrect results. It must contain at least as many entries as there are
           DB tables. -->
