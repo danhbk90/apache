@@ -91,6 +91,8 @@
                 <value>/null-checkout/**</value>
                 <value>/null-giftcard/**</value>
                 <value>/hosted/null-checkout/**</value>
+                <value>/bao-gia-tu-dong/**</value>
+                <value>/yeu-cau-bao-gia/**</value>
             </list>
         </property>
     </bean>

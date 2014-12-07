@@ -20,7 +20,8 @@
               username="${database.user}"
               password="${database.password}"
               driverClassName="${database.driver}"
-              url="${database.url}"/>
+              url="${database.url}"
+              connectionProperties="useUnicode=true;characterEncoding=utf8;"/>
 
     <Resource name="jdbc/storage"
               auth="Container"
@@ -42,7 +43,8 @@
               username="${database.user}"
               password="${database.password}"
               driverClassName="${database.driver}"
-              url="${database.url}"/>
+              url="${database.url}"
+              connectionProperties="useUnicode=true;characterEncoding=utf8;"/>
 
     <Resource name="jdbc/secure"
               auth="Container"
@@ -64,5 +66,6 @@
               username="${database.user}"
               password="${database.password}"
               driverClassName="${database.driver}"
-              url="${database.url}"/>
+              url="${database.url}"
+              connectionProperties="useUnicode=true;characterEncoding=utf8;"/>
 </Context>

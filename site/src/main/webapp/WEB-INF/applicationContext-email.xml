@@ -9,12 +9,13 @@
     <!-- A dummy mail sender has been set to send emails for testing purposes only
          To view the emails sent use "DevNull SMTP" (download separately) with the following setting:
             Port: 30000 -->
-    <!-- <bean id="blMailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
-        <property name="host"><value>localhost</value></property>
-        <property name="port"><value>30000</value></property>
+    <bean id="blMailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <property name="host"><value>smtp.gmail.com</value></property>
+        <property name="port"><value>587</value></property>
         <property name="protocol"><value>smtp</value></property>
-        <property name="username"><value>customerservice@heatclinic.com</value></property>
-        <property name="password"><value></value></property>
+        <property name="defaultEncoding" value="UTF-8"/>
+        <property name="username"><value>dathang24h.net@gmail.com</value></property>
+        <property name="password"><value>dathang24h.net@123</value></property>
         <property name="javaMailProperties">
             <props>
                 <prop key="mail.smtp.starttls.enable">true</prop>
@@ -24,11 +25,18 @@
         </property>
     </bean>
 
-    <bean id="blEmailTemplateResolver" class="org.thymeleaf.templateresolver.ClassLoaderTemplateResolver">
+    <!--<bean id="blEmailTemplateResolver" class="org.thymeleaf.templateresolver.ClassLoaderTemplateResolver">
         <property name="prefix" value="emailTemplates/" />
         <property name="suffix" value=".html" />
         <property name="cacheable" value="${cache.page.templates}"/>
         <property name="cacheTTLMs" value="${cache.page.templates.ttl}" />
+    </bean>-->
+    <bean id="blEmailTemplateResolver" class="org.thymeleaf.templateresolver.ClassLoaderTemplateResolver">
+        <property name="prefix" value="emailTemplates/" />
+        <property name="suffix" value=".html" />
+        <property name="templateMode" value="HTML5" />
+        <property name="cacheable" value="false"/>
+        <property name="characterEncoding" value="UTF-8" />
     </bean>
 
     <bean id="blEmailTemplateEngine" class="org.thymeleaf.spring3.SpringTemplateEngine">
@@ -48,16 +56,17 @@
     <bean id="blMessageCreator" class="org.broadleafcommerce.common.email.service.message.ThymeleafMessageCreator">
         <constructor-arg ref="blEmailTemplateEngine"/>
         <constructor-arg ref="blMailSender"/>
-    </bean> -->
-
-    <bean id="blMessageCreator" class="org.broadleafcommerce.common.email.service.message.NullMessageCreator">
-        <constructor-arg ref="blMailSender"/>
     </bean>
+
+    <!--<bean id="blMessageCreator" class="org.broadleafcommerce.common.email.service.message.NullMessageCreator">
+        <constructor-arg ref="blMailSender"/>
+    </bean>-->
     
     <bean id="blEmailInfo" class="org.broadleafcommerce.common.email.service.info.EmailInfo">
         <property name="fromAddress"><value>support@mycompany.com</value></property>
         <property name="sendAsyncPriority"><value>2</value></property>
-        <property name="sendEmailReliableAsync"><value>false</value></property>     
+        <property name="sendEmailReliableAsync"><value>false</value></property>
+        <property name="encoding"><value>UTF-8</value></property>
     </bean>
     
     <bean id="blRegistrationEmailInfo" parent="blEmailInfo">
@@ -74,5 +83,15 @@
         <property name="subject" value="Your order with The Heat Clinic"/>
         <property name="emailTemplate" value="orderConfirmation-email"/>
     </bean>
-                  
+
+    <bean id="dh24hCrawlingEmailInfo" parent="blEmailInfo">
+        <property name="subject" value="[DATHANG24H.NET] PROCESS PRODUCT LINK SUCCESS"/>
+        <property name="emailTemplate" value="crawling/crawling-email"/>
+    </bean>
+
+    <bean id="dh24hRequestBillEmailInfo" parent="blEmailInfo">
+        <property name="subject" value="[DATHANG24H.NET] YOUR REQUEST IS BEING PROCESSED - YOU WILL RECEIVE THE RESPONSE AS SOON AS POSSIBLE"/>
+        <property name="emailTemplate" value="crawling/orderConfirmation-email"/>
+    </bean>
+
 </beans>

@@ -137,7 +137,7 @@ $(function(){
                         if (wishlistAdd) {
                             HC.showNotification(data.productName + "  has been added to your wishlist!");
                         } else {
-                            HC.showNotification(data.productName + "  has been added to the cart!", 2000);
+                            HC.showNotification(data.productName + "  đã được bỏ vào giỏ hàng!", 2000);
                         }
                     }
                 }

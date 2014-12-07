@@ -1,10 +1,10 @@
 <div>
     <ul id="order-history" th:unless="${#lists.isEmpty(orders)}">
         <li>
-            <span class="order-number">Order Number</span>
-            <span class="submit-date">Date</span>
-            <span class="status">Status</span>
-            <span class="total">Total</span>
+            <span class="order-number" th:text="#{account.order_history.orderNumber}">Order Number</span>
+            <span class="submit-date" th:text="#{account.order_history.date}">Date</span>
+            <span class="status" th:text="#{account.order_history.status}">Status</span>
+            <span class="total" th:text="#{account.order_history.total}">Total</span>
         </li>
         <li class="order" th:each="order : ${orders}" th:object="${order}" th:attr="data-order-number=*{orderNumber}">
             <div class="order-info-row">
@@ -17,6 +17,6 @@
         </li>
     </ul>
     
-    <h3 th:if="${#lists.isEmpty(orders)}">You have not placed any orders.</h3>
+    <h3 th:if="${#lists.isEmpty(orders)}" th:text="#{account.message.no_order}">You have not placed any orders.</h3>
 
 </div>

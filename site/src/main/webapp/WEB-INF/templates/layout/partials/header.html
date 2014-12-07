@@ -34,7 +34,7 @@
 
         </div>
 
-        <div id="languages">
+        <!--<div id="languages">
             <span id="selectedLocale" th:text="${session.blLocale.localeCode}" style="display: none" />
 
             <a href="javascript:;" onclick="BLC.addUrlParam(document.location.search, 'blLocaleCode', 'en_US')">
@@ -56,12 +56,13 @@
                 <img id="fr_FR" src="img/flags/Mexico.png" th:src="@{/img/flags/France.png}" alt="France" title="French (France)" />
             </a>
 
-        </div>
+        </div>-->
 
         <div id="logo"><h1><a th:href="@{/}">The Heat Clinic Home</a></h1></div>
         
         <div id="search">
             <blc:form th:action="@{/search}" method="GET">
+            <span th:text="#{home.hotline}">Hotline</span>&nbsp;<span th:text="#{home.hotline.numbers}">01666756666</span>
             <input type="search" class="search" name="q" th:value="${originalQuery}" />
             <input type="submit" id="search_button" value="go" />
             </blc:form>

@@ -1,0 +1,234 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Heat Clinic - Order Confirmation</title>
+    </head>
+
+    <body style="margin: 0; padding: 0; background-image: url('https://lh3.googleusercontent.com/-OoIsVdbrCqE/U-3Dy009gJI/AAAAAAAAAtE/Dnmm5JJ_pxc/w560-h306-no/crawling-background.png')">
+        <div>
+            <div>
+                <div style="float:left;">
+                    <img style="width:170px;" src="https://lh3.googleusercontent.com/-zW-EZLTnbvw/VFZwN9t-bBI/AAAAAAAAClI/gFRDIDv10Dk/w224-h161-no/dathang24h_net_logo.png"></img>
+                </div>
+                <div style="text-align:center">
+                    <h1 th:text="#{crawling.title}">crawling.title</h1>
+                    <h2 th:text="#{crawling.orderNo}">crawling.orderNo</h2>
+                    <div><em>(<span th:text="#{crawling.orderDate}">crawling.orderDate</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span th:text="#{crawling.orderMonth}">crawling.orderMonth</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span th:text="#{crawling.orderYear}">crawling.orderYear</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</em></div>
+                </div>
+            </div>
+
+            <div style="padding-top:40px;">
+                <div>
+                    <table style="width:100%">
+                        <tbody>
+                            <tr style="height:30px;">
+                                <td width="30%" style="vertical-align: middle;border: 1px solid #D1D1E0;" rowspan="4"><strong th:text="#{crawling.buyerInformation}">crawling.buyerInformation</strong></td>
+                                <td width="20%" style="border: 1px solid #D1D1E0;"><strong th:text="#{crawling.fullName}">crawling.fullName</strong></td>
+                                <td width="50%" style="border: 1px solid #D1D1E0;"><span th:text="${fullname}">fullname</span></td>
+                            </tr>
+                            <tr style="height:30px;">
+                                <td style="border: 1px solid #D1D1E0;"><strong th:text="#{crawling.address}">crawling.address</strong></td>
+                                <td style="border: 1px solid #D1D1E0;"><span th:text="${address}">address</span></td>
+                            </tr>
+                            <tr style="height:30px;">
+                                <td style="border: 1px solid #D1D1E0;"><strong th:text="#{crawling.email}">crawling.email</strong></td>
+                                <td style="border: 1px solid #D1D1E0;"><span th:text="${email}">email</span></td>
+                            </tr>
+                            <tr style="height:30px;">
+                                <td style="border: 1px solid #D1D1E0;"><strong th:text="#{crawling.phone}">crawling.phone</strong></td>
+                                <td style="border: 1px solid #D1D1E0;"><span th:text="${phone}">phone</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div>
+                <div>
+                    <h4 th:text="#{crawling.orderInformation}">crawling.orderInformation</h4>
+                    <table width="100%">
+                        <thead>
+                            <tr>
+                                <th width="60%" style="height:30px; border: 1px solid #D1D1E0;">
+                                    <div th:text="#{crawling.productInformation}">crawling.productInformation</div>
+                                </th>
+                                <th width="40%" style="height:30px; border: 1px solid #D1D1E0;">
+                                    <div th:text="#{crawling.productExtraInformation}">crawling.productExtraInformation</div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="border: 1px solid #D1D1E0;">
+                                    <div style="padding-bottom:3px;">
+                                        <a th:href="${crawling_productLink}" target="_blank">
+                                            <strong th:text="#{crawling.productLink}">crawling.productLink</strong>
+                                        </a>&nbsp;
+                                        <input type="text" id="productLink" name="productLink" th:placeholder="#{crawling.productLink}" th:value="${crawling_productLink}" th:title="${crawling_productLink}" style="width:300px;" />
+                                    </div>
+                                    <div>
+                                        <strong th:text="#{crawling.productName}">crawling.productName</strong>&nbsp;&nbsp;&nbsp;
+                                        <input type="text" id="productName" name="productName" th:placeholder="#{crawling.productName}" th:value="${crawling_productTitle}" th:title="${crawling_productTitle}" style="width:300px;" />
+                                    </div>
+                                    <div style="max-width:180px;float:left;" th:each="imageURL : ${crawling_productImages}"><img th:alt="#{crawling.productImage}" th:src="${imageURL}" style="max-width:120px;" /></div>
+                                </td>
+                                <td style="border: 1px solid #D1D1E0;text-align:center;vertical-align:top">
+                                    <textarea name="productExtraInformation" id="productExtraInformation" cols="39" rows="9" th:placeholder="#{crawling.productExtraInformation.placeholder}" th:text="${productExtraInformation}">productExtraInformation</textarea>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div>
+                <div>
+                    <h4 th:text="#{crawling.totalCost}">crawling.totalCost</h4>
+                    <table width="100%">
+                        <thead>
+                            <tr style="height:30px;">
+                                <th width="38%" style="border: 1px solid #D1D1E0;" th:text="#{crawling.costType}">crawling.costType</th>
+                                <th width="20%" style="border: 1px solid #D1D1E0;" th:text="#{crawling.cost}">crawling.cost</th>
+                                <th width="20%" style="border: 1px solid #D1D1E0;" th:text="#{crawling.total}">crawling.total</th>
+                                <th width="22%" style="border: 1px solid #D1D1E0;" th:text="#{crawling.subTotalCost}">crawling.subTotalCost</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="height:30px;">
+                                <td style="border: 1px solid #D1D1E0;" th:text="#{crawling.webPrice}">crawling.webPrice</td>
+                                <td style="border: 1px solid #D1D1E0;">
+                                    <div style="text-align:center;">
+                                      <span th:text="${crawling_currency}">$</span><span th:text="${crawling_productCost}">0.00</span>
+                                    </div>
+                                </td>
+                                <td style="border: 1px solid #D1D1E0;"><div style="text-align:center;">01</div></td>
+                                <td style="border: 1px solid #D1D1E0;">
+                                    <div style="text-align:center;">
+                                        <span th:text="${crawling_currency}">$</span><span th:text="${crawling_productCost}">0.00</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr style="height:30px;">
+                                <td style="border: 1px solid #D1D1E0;" th:text="#{crawling.importTax}">crawling.importTax</td>
+                                <td style="border: 1px solid #D1D1E0;">
+                                    <div style="text-align:center;">
+                                        <span th:text="${crawling_currency}">$</span><span th:text="${crawling_productImportTax}">0.00</span>
+                                    </div>
+                                </td>
+                                <td style="border: 1px solid #D1D1E0;"><div style="text-align:center;">01</div></td>
+                                <td style="border: 1px solid #D1D1E0;">
+                                    <div style="text-align:center;">
+                                        <span th:text="${crawling_currency}">$</span><span th:text="${crawling_productImportTax}">0.00</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr style="height:30px;">
+                                <td style="border: 1px solid #D1D1E0;" th:text="#{crawling.shippingAndTaxInternationalCost}">crawling.shippingAndTaxInternationalCost</td>
+                                <td style="border: 1px solid #D1D1E0;">
+                                    <div style="text-align:center;">
+                                        <span th:text="${crawling_currency}">$</span><span th:text="${crawling_productTaxAndShippingCost}">0.00</span>
+                                    </div>
+                                </td>
+                                <td style="border: 1px solid #D1D1E0;"><div style="text-align:center;">01</div></td>
+                                <td style="border: 1px solid #D1D1E0;">
+                                    <div style="text-align:center;">
+                                        <span th:text="${crawling_currency}">$</span><span th:text="${crawling_productTaxAndShippingCost}">0.00</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr style="height:30px;">
+                                <td style="border: 1px solid #D1D1E0;" th:text="#{crawling.shippingCost}">crawling.shippingCost</td>
+                                <td style="border: 1px solid #D1D1E0;">
+                                    <div style="text-align:center;">
+                                        <span th:text="${crawling_currency}">$</span><span th:text="${crawling_productShippingCost}">0.00</span>
+                                    </div>
+                                </td>
+                                <td style="border: 1px solid #D1D1E0;"><div style="text-align:center;">01</div></td>
+                                <td style="border: 1px solid #D1D1E0;">
+                                    <div style="text-align:center;">
+                                        <span th:text="${crawling_currency}">$</span><span th:text="${crawling_productShippingCost}">0.00</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr style="height:30px;">
+                                <td style="border: 1px solid #D1D1E0;" th:text="#{crawling.shippingInternalCost}">crawling.shippingInternalCost</td>
+                                <td style="border: 1px solid #D1D1E0;">
+                                    <div style="text-align:center;">
+                                        <span th:text="${crawling_currency}">$</span><span th:text="${crawling_productCost != null} ? '0.00'">0.00</span>
+                                    </div>
+                                </td>
+                                <td style="border: 1px solid #D1D1E0;"><div style="text-align:center;">01</div></td>
+                                <td style="border: 1px solid #D1D1E0;">
+                                    <div style="text-align:center;">
+                                        <span th:text="${crawling_currency}">$</span><span th:text="${crawling_productCost != null} ? '0.00'">0.00</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr style="height:30px;">
+                                <td style="border: 1px solid #D1D1E0;" th:text="#{crawling.orderingCost}">crawling.orderingCost</td>
+                                <td style="border: 1px solid #D1D1E0;">
+                                    <div th:each="processOrderingCost,iteratorStatus : ${crawling_processOrderingCosts}" id="processOrderingCosts" style="text-align:center;">
+                                        <span th:text="${crawling_currency}">$</span><span th:text="${processOrderingCost}">0</span>&nbsp;(<span th:text="${iteratorStatus.first} ? #{crawling.email.prePaid} + ' ' : ''">crawling.email.prePaid</span><span th:text="${crawling_prepaidValues[iteratorStatus.index]}">crawling_prepaidValues</span>%)
+                                    </div>
+                                </td>
+                                <td style="border: 1px solid #D1D1E0;"><div style="text-align:center;">01</div></td>
+                                <td style="border: 1px solid #D1D1E0;">
+                                    <div th:each="processOrderingCost,iteratorStatus : ${crawling_processOrderingCosts}" id="processOrderingCosts" style="text-align:center;">
+                                        <span th:text="${crawling_currency}">$</span><span th:text="${processOrderingCost}">0</span>&nbsp;(<span th:text="${iteratorStatus.first} ? #{crawling.email.prePaid} + ' ' : ''">crawling.email.prePaid</span><span th:text="${crawling_prepaidValues[iteratorStatus.index]}">crawling_prepaidValues</span>%)
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr style="height:60px;">
+                                <td colspan="2" style="border: 1px solid #D1D1E0;">
+                                    <div style="text-align:right">
+                                        <strong th:text="#{crawling.finalCost}">crawling.finalCost</strong>
+                                        <br />
+                                        <em style="background-color:yellow;">(<span th:text="#{crawling.exchangeRate}">Exchange Rate</span>:&nbsp;<span th:text="${crawling_currency}">$</span>1&nbsp;=&nbsp;<span th:text="${crawling_exchangeRate}">crawling_exchangeRate</span>&nbsp;<span th:text="#{crawling.vnd}">crawling.vnd</span>)</em>
+                                    </div>
+                                </td>
+                                <td colspan="2" style="border: 1px solid #D1D1E0;">
+                                    <div>
+                                        <div th:each="finalCost,iteratorStatus : ${crawling_finalCosts}" style="text-align:center">
+                                            <strong><span th:text="${crawling_currency}">$</span><span th:text="${finalCost}">0</span></strong>&nbsp;-&nbsp;
+                                            <span style="font-size:18px;color:green;">
+                                                <strong>
+                                                    <span th:text="${crawling_finalCostsVND[iteratorStatus.index]}">0</span>&nbsp;<span th:text="#{crawling.vnd}">crawling.vnd</span>
+                                                </strong>
+                                            </span>
+                                            (<span th:text="${iteratorStatus.first} ? #{crawling.email.prePaid} + ' ' : ''">crawling.email.prePaid</span><span th:text="${crawling_prepaidValues[iteratorStatus.index]}">crawling_prepaidValues</span>%)
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr style="height:30px;">
+                                <td colspan="2" style="border: 1px solid #D1D1E0;"><div style="text-align:right"><strong th:text="#{crawling.prePaid}">crawling.prePaid</strong></div></td>
+                                <td colspan="2" style="border: 1px solid #D1D1E0;">
+                                  <div style="text-align:center">
+                                      <div class="controls" th:if="${crawling_productCost != null}">
+                                          <select id="prePaid" name="prePaid" class="input-large" onchange="changePrepaid($(this).prop('length'), $(this).prop('selectedIndex'));">
+                                              <option th:each="prepaidValue, iterStat : ${crawling_prepaidValues}" th:value="${iterStat}"><span th:text="${prepaidValue}">prepaidValue</span>%&nbsp;-&nbsp;<span th:text="${crawling_prepaidValuesVND[iterStat.index]}">crawling_prepaidValuesVND</span>&nbsp;<span th:text="#{crawling.vnd}">crawling.vnd</span></option>
+                                          </select>
+                                      </div>
+                                  </div>
+                                </td>
+                            </tr>
+                            <tr style="height:30px;">
+                                <td colspan="2" style="border: 1px solid #D1D1E0;"><div style="text-align:right"><strong th:text="#{crawling.remainingCost}">crawling.remainingCost</strong></div></td>
+                                <td colspan="2" style="border: 1px solid #D1D1E0;">
+                                    <div th:each="remainingCostsVND,iteratorStatus : ${crawling_remainingCostsVND}" style="text-align:center">
+                                        <span style="font-size:18px;color:red;">
+                                            <strong>
+                                                <span th:text="${remainingCostsVND}">0</span>&nbsp;<span th:text="#{crawling.vnd}">crawling.vnd</span>
+                                            </strong>
+                                        </span>
+                                        (<span th:text="${iteratorStatus.first} ? #{crawling.email.prePaid} + ' ' : ''">crawling.email.prePaid</span><span th:text="${crawling_prepaidValues[iteratorStatus.index]}">crawling_prepaidValues</span>%)
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

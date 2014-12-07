@@ -97,6 +97,8 @@
                 <entry key="checkout/confirmation" value="layout/fullPageNoNavLayout" />
                 <entry key="layout/" value="NONE" />
                 <entry key="content/NONE" value="NONE" />
+                <entry key="crawling/crawlingSuccess" value="NONE" />
+                <entry key="crawling/requestBillSuccess" value="layout/fullPageLayout" />
             </map>
         </property>
     </bean>

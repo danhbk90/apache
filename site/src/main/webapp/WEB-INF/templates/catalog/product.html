@@ -4,7 +4,7 @@
 <!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 
-<head th:include="/layout/partials/head (pageTitle=${product.name + '- Broadleaf Demo - Heat Clinic'})"></head>
+<head th:include="/layout/partials/head (pageTitle=${product.name + '- dathang24h.net'})"></head>
 
 <body>
     <div id="notification_bar"></div>
@@ -56,7 +56,7 @@
                         
                         <div th:class="*{'productActions' + id}">
                             <div class="in_cart" th:classappend="${!inCart}? ' hidden'">
-                                <a class="modalcart big-button gray-button" th:href="@{/cart}">In Cart!</a>
+                                <a class="modalcart big-button gray-button" th:href="@{/cart}" th:text="#{product.inCart}">In Cart!</a>
                             </div>
                             <div class="add_to_cart" th:classappend="${inCart or !availableInventory}? ' hidden'">
                                 <input type="hidden" name="productId" th:value="*{id}" />
@@ -89,14 +89,14 @@
                             <div class="add_to_wishlist" th:classappend="${wishlist.containsSku(product.defaultSku)}? ' hidden'">
                                 <input type="hidden" name="productId" th:value="*{id}" />
                                 <input type="hidden" name="quantity" value="1" />
-                                <input type="submit" class="addToWishlist small dark" value="+ Add to Wishlist" />
+                                <input type="submit" class="addToWishlist small dark" value="+ Add to Wishlist" th:value="#{product.addToWishlist}" />
                             </div>
                         </div>
                     </blc:form>
                 </div>
                     
                 <p>
-                    Share this Sauce:
+                    <span th:text="#{product.share}">Share this Sauce:</span>
                     <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
                         <a class="addthis_button_preferred_1"></a>
                         <a class="addthis_button_preferred_2"></a>
@@ -217,21 +217,21 @@
                     </div>
                     <div th:if="${customer.loggedIn}">
                         <div th:if="${ratingSummary}">
-                            <a th:unless="${currentCustomerReview}" class="create-review" th:href="@{'/reviews/product/' + ${product.id}}">Create a review</a> 
+                            <a th:unless="${currentCustomerReview}" class="create-review" th:href="@{'/reviews/product/' + ${product.id}}" th:text="#{product.create_review}">Create a review</a> 
                         </div>
                         <div th:unless="${ratingSummary}">
-                            <a th:href="@{'/reviews/product/' + ${product.id}}" class="create-review">Be the first to write a review!</a>
+                            <a th:href="@{'/reviews/product/' + ${product.id}}" class="create-review" th:text="#{product.be_the_first_review}">Be the first to write a review!</a>
                         </div>
                     </div>
                     <div th:unless="${customer.loggedIn}">
-                        <a th:if="${ratingSummary}" href="#" th:href="@{/login}" class="small dark account">Login to create a review</a>
-                        <a th:unless="${ratingSummary}" th:href="@{/login}" class="account">Login and be the first to write a review!</a>
+                        <a th:if="${ratingSummary}" href="#" th:href="@{/login}" class="small dark account" th:text="#{product.login_to_create_review}">Login to create a review</a>
+                        <a th:unless="${ratingSummary}" th:href="@{/login}" class="account" th:text="#{product.login_and_be_the_first_review}">Login and be the first to write a review!</a>
                     </div>
                 </div>          
         </section>
     
         <section id="right_column">
-            <header>Featured Products</header>
+            <header><span th:text="#{category.featuredProducts}">Featured Products</span></header>
             <div id="options">
                 <div class="section">
                      <blc:related_products productId="${product.id}"/>   

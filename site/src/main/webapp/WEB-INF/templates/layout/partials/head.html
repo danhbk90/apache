@@ -1,7 +1,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-    <title th:unless="${pageTitle == 'TEMPLATE'}" th:text="${#strings.isEmpty(pageTitle) ? 'Broadleaf Demo - Heat Clinic' : pageTitle}"></title>
+    <title th:unless="${pageTitle == 'TEMPLATE'}" th:text="${#strings.isEmpty(pageTitle) ? 'dathang24h.net' : pageTitle}"></title>
     
     <title th:if="${pageTitle == 'TEMPLATE'}" th:remove="tag">
         <title th:inline="text" th:include="${templateName} :: title" />
@@ -19,8 +19,8 @@
                        jquery.rating.css" />
     
     <link rel="stylesheet" th:unless="${#strings.isEmpty(additionalCss)}" />
-    
+    <link href="../../css/ordering/bootstrap.css" rel="stylesheet" media="screen" />
 
     <script src="../../js/libs/modernizr-2.5.3.min.js" th:src="@{/js/libs/modernizr-2.5.3.min.js}"></script>
-    
+
     <blc:google_universal_analytics ordernumber="${order?.orderNumber}" />

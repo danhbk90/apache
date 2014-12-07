@@ -1,15 +1,27 @@
-<nav>   
+<nav id="header" role="navigation" class="navbar navbar-static-top navbar-default navbar-header-full navbar-dark">
     <div th:remove="all">
         <!--
              This template displays the navigation of the site by looking up the category named "Nav"
              and building a list of the categories sub-categories.                          
         -->
     </div>
-    <blc:categories resultVar="navCategories" parentCategory="Primary Nav" maxResults="6" />
+    <blc:categories resultVar="navCategories" parentCategory="Primary Nav" maxResults="7" />
     
-    <ul>
-        <li th:each="category : ${navCategories}" th:unless="${#strings.isEmpty(category.url)}">
-            <a class="home" th:href="@{${category.url}}" th:class="${categoryStat.first}? 'home'" th:text="${category.name}"></a>
+    <ul class="nav navbar-nav">
+        <li th:each="category : ${navCategories}" th:unless="${#strings.isEmpty(category.url)}" class="dropdown">
+            <a th:if="!${#lists.isEmpty(category.getChildCategories())}" class="dropdown-toggle" data-toggle="dropdown" th:href="@{${category.url}}" th:class="${categoryStat.first}? 'home'">
+                <span th:text="${category.name}"></span>
+                <i class="icon-chevron-down icon-white" th:if="!${#lists.isEmpty(category.getChildCategories())}"></i>
+            </a>
+            <a th:if="${#lists.isEmpty(category.getChildCategories())}" th:href="@{${category.url}}" th:class="${categoryStat.first}? 'home'">
+                <span th:text="${category.name}"></span>
+                <i class="icon-chevron-down icon-white" th:if="!${#lists.isEmpty(category.getChildCategories())}"></i>
+            </a>
+            <ul th:if="!${#lists.isEmpty(category.getChildCategories())}" class="dropdown-menu dropdown-menu-left">
+                <li th:each="cat : ${category.getChildCategories()}">
+                    <a th:text="${cat.name}" th:href="@{${cat.url}}"  />
+                </li>
+            </ul>
         </li>
     </ul>
 </nav>
