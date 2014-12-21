@@ -619,6 +619,23 @@ header {
 .navbar-header .navbar-toggle:focus {
   background-color: #0087c1;
 }
+.dropdown-submenu:hover > .dropdown-menu {
+    display: block;
+}
+.dropdown-submenu > .dropdown-menu {
+    left: 100%;
+    margin-left: 0;
+    margin-top: -5px;
+    top: -1px;
+}
+.dropdown-menu {
+    border-radius: 0;
+    margin-top: 0 !important;
+    min-width: 200px;
+    padding: 0;
+    z-index: 9999 !important;
+    font: 15px/21px "Oxygen",Helvetica,sans-serif;
+}
 @media (max-width: 767px) {
   .navbar-default .navbar-nav {
     margin-top: 0;
@@ -661,9 +678,9 @@ header {
   .navbar-dark .dropdown-submenu .dropdown-menu li > a:hover {
     background-color: #0099da !important;
   }
-  .dropdown-submenu {
+  /*.dropdown-submenu {
     margin-left: -15px;
-  }
+  }*/
 }
 /* Navbar Inverse */
 .navbar-inverse {
@@ -2293,8 +2310,12 @@ and (max-width : 480px) {
         display: block; 
     }
     
-    #banners, #home_feature, #left_content, #right_content, #header_content #languages {
+    #banners, /*#home_feature,*/ #left_content, #right_content, #header_content #languages {
         display: none;
+    }
+    
+    .field100 {
+        width: 86%;
     }
     
     footer {
@@ -2334,7 +2355,7 @@ and (max-width : 480px) {
         height: auto;
     }
     
-    nav {
+    /*nav {
         width: 100%;
         height: auto;
         margin: 5px 0;
@@ -2384,10 +2405,51 @@ and (max-width : 480px) {
                 -moz-transition: background-color 0.2s ease-in;  
                 -o-transition: background-color 0.2s ease-in;  
                 transition: background-color 0.2s ease-in; 
-            }
+            }*/
+    
+    nav#header > ul.nav.navbar-nav {
+        padding-left: 10px;
+        width: 100%;
+    }
+    
+    a.has_children > span > i {
+        display: none;
+    }
+    
+    li.dropdown-submenu > ul {
+        display: block;
+    }
+    
+    .dropdown-menu.dropdown-menu-left > li {
+        margin-left: 15px;
+    }
+    
+    .navbar-dark .dropdown.active > a,
+    .navbar-dark .dropdown a:hover,
+    .navbar-dark .dropdown a:focus,
+    .navbar-dark .dropdown.active a:hover,
+    .navbar-dark .dropdown.active a:focus {
+        background-color: transparent !important;
+    }
+    
+    .navbar-dark .dropdown-submenu .dropdown-menu li > a:hover {
+        background-color: transparent !important;
+    }
     
     #header_content #search {
-        display: none;
+        display: block;
+        position: static;
+        top: auto;
+        right: auto;
+        padding-left: 6px;
+    }
+    
+    #header_content #search .search {
+        width: 86%;
+    }
+    
+    #customer-reviews-container {
+        width: 90% !important;
     }
     
     #content .title_bar {
@@ -2546,7 +2608,7 @@ and (max-width : 480px) {
     
         #products li .image {
             width: 320px;
-            height: 240px;
+            height: 320px;
             margin-bottom: 10px;
             overflow: hidden;
             position: relative;

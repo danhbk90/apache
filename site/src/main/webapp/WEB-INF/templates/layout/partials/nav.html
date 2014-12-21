@@ -5,21 +5,27 @@
              and building a list of the categories sub-categories.                          
         -->
     </div>
-    <blc:categories resultVar="navCategories" parentCategory="Primary Nav" maxResults="7" />
+    <blc:categories resultVar="navCategories" parentCategory="Primary Nav" maxResults="6" />
     
     <ul class="nav navbar-nav">
         <li th:each="category : ${navCategories}" th:unless="${#strings.isEmpty(category.url)}" class="dropdown">
-            <a th:if="!${#lists.isEmpty(category.getChildCategories())}" class="dropdown-toggle" data-toggle="dropdown" th:href="@{${category.url}}" th:class="${categoryStat.first}? 'home'">
+            <a th:if="!${#lists.isEmpty(category.getChildCategories())}" class="dropdown-toggle" data-toggle="dropdown" th:href="@{${category.url}}" th:class="${categoryStat.first} ? 'home'">
                 <span th:text="${category.name}"></span>
                 <i class="icon-chevron-down icon-white" th:if="!${#lists.isEmpty(category.getChildCategories())}"></i>
             </a>
-            <a th:if="${#lists.isEmpty(category.getChildCategories())}" th:href="@{${category.url}}" th:class="${categoryStat.first}? 'home'">
+            <a th:if="${#lists.isEmpty(category.getChildCategories())}" th:href="@{${category.url}}" th:class="${categoryStat.first} ? 'home'">
                 <span th:text="${category.name}"></span>
                 <i class="icon-chevron-down icon-white" th:if="!${#lists.isEmpty(category.getChildCategories())}"></i>
             </a>
             <ul th:if="!${#lists.isEmpty(category.getChildCategories())}" class="dropdown-menu dropdown-menu-left">
-                <li th:each="cat : ${category.getChildCategories()}">
-                    <a th:text="${cat.name}" th:href="@{${cat.url}}"  />
+                <li th:each="cat : ${category.getChildCategories()}" th:class="!${#lists.isEmpty(cat.getChildCategories())} ? 'dropdown-submenu'">
+                    <a th:class="!${#lists.isEmpty(cat.getChildCategories())} ? 'has_children'" th:href="!${#lists.isEmpty(cat.getChildCategories())} ? 'javascript:void(0);' : @{${cat.url}}">
+                        <span th:text="${cat.name}">cat.name</span>
+                        <span th:if="!${#lists.isEmpty(cat.getChildCategories())}" style="display:inline-block;position:absolute;right:9px;padding-top:3px;"><i class="icon-chevron-right icon-white"></i></span>
+                    </a>
+                    <ul th:if="!${#lists.isEmpty(cat.getChildCategories())}" class="dropdown-menu dropdown-menu-left">
+                        <li th:each="childCat : ${cat.getChildCategories()}"><a th:href="@{${childCat.url}}" th:text="${childCat.name}">childCat.name</a></li>
+                    </ul>
                 </li>
             </ul>
         </li>
