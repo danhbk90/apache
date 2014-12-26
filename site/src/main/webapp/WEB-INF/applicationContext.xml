@@ -261,4 +261,7 @@
         <property name="locations" ref="blCssLocations"/>
         <property name="handlers" ref="blCssHandlers" />
     </bean>
+
+    <!-- Override PriceTextDisplayProcessor -->
+    <bean id="blPriceTextDisplayProcessor" class="com.quangpld.processor.MyPriceTextDisplayProcessor" />
 </beans>
